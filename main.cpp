@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 
-//    Spectacol cacat("futai", 136, false, "Comedie");
+//    Spectacol cacat("futaiul", 136, false, "Comedie");
 //    cacat.adauga_prezentare(24, 04, 2019, 44);
 //    cacat.adauga_prezentare(44, 90, 555, 0);
 //    cacat.adauga_prezentare(15, 03, 1999, 1);
