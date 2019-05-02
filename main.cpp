@@ -17,7 +17,7 @@ int main() {
 //    cout << cacat.exista_prezentare(24, 04, 2019) << endl;
 
 
-//    Spectator s("Cristianus", 23);
+//    Spectator s("Cristianusul", 23);
 //    s.adauga_pofta("Comedie");
 //    s.adauga_pofta("Opera");
 //    s.adauga_pofta("Tenor");
