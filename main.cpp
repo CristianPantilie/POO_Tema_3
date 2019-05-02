@@ -32,10 +32,11 @@ int main() {
 //    //spectacolul sa fie potrivit pentru categoria de varsta a clientului
 //
 //    s.afis();
+//
+//    Opera o("TENOR");
+//    o.afis();
 
-    Opera o("TENOR");
-    o.afis();
-
+    cout << "lol";
 
     return 0;
 }
