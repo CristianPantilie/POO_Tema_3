@@ -2,6 +2,7 @@
 #include "Spectacol.h"
 #include "Spectator.h"
 #include "Opera.h"
+#include "Circ.h"
 
 using namespace std;
 
@@ -36,7 +37,14 @@ int main() {
 //    Opera o("TENOR");
 //    o.afis();
 
-    cout << "lol";
+
+    Opera o("O opera", 136, false, "DRAMA", 2, 10);
+    o.adauga_act("Salam", "TENOR", 55);
+    o.adauga_act("Abi", "BASS", 60);
+
+    Circ c("Circul meu", 80);
+    c.adauga_numar(false, "LEI,TIGRI,ELEFANTI");
+
 
     return 0;
 }

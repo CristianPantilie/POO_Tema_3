@@ -5,10 +5,15 @@
 #include "Spectacol.h"
 
 class Teatru: Spectacol {
-//    const bool pentru_adulti = false;  baga-l in constructor
+
+private:
 
     bool interactiv;
-    int durata_variabila; //un minut pentru adult si doua pentru copchii sub 16 ani)
+    double durata_variabila; //un minut pentru adult si doua pentru copii sub 16 ani)
+
+public:
+    Teatru(const string &nume, double durata, bool pentruAdulti, const string &gen, bool interactiv);
+
 };
 
 

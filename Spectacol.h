@@ -11,13 +11,7 @@ using namespace std;
 class Spectacol {
 private:
     string nume;
-    double durata;
-
-    bool pentru_adulti;
     string gen;
-
-    //spectacolele de circ alcatuite din mai multe numere (prestatii)
-
 
     struct prezentare{
         unsigned int zi;
@@ -25,7 +19,13 @@ private:
         unsigned int an;
         unsigned int locuri;
     };
+
     list<struct prezentare> prezentari;
+
+protected:
+
+    double durata;
+    bool pentru_adulti;
 
 public:
     void adauga_prezentare(unsigned int zi, unsigned int luna, unsigned int an, unsigned int locuri);

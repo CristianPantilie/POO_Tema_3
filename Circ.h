@@ -5,18 +5,19 @@
 #include "Spectacol.h"
 
 class Circ: Spectacol {
-//    pentru_adulti = false;   (il bagi in constructor)
-//    gen = comedie;    (la fel, si sa faci si tipuri in clasa spectacol)
-//    daca un nr e pentru adulti, tot spectacolul devine pentru adulti (constructor)
+
+private:
     list<string> animale;
 
     struct numar
     {
-        bool pentru_adulti;    //daca e pentru adulti atunci tot spectacolul devine asa
+        bool pentru_adulti;
         vector<string> animale;
     };
 
-//    cum il impart in mai multe numere?
+public:
+    Circ(const string &nume, double durata);
+    void adauga_numar(bool adulti, string animale);
 
 };
 

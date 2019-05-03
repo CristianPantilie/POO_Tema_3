@@ -1,5 +1,5 @@
-//
-// Created by Mirela on 4/21/2019.
-//
 
 #include "Teatru.h"
+
+Teatru::Teatru(const string &nume, double durata, bool pentruAdulti, const string &gen, bool interactiv) : Spectacol(
+        nume, durata, pentruAdulti, gen), interactiv(interactiv) {}

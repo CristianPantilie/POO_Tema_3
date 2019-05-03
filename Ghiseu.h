@@ -7,17 +7,25 @@
 using namespace std;
 
 //Singleton design pattern
+
 class Ghiseu{
 private:
     static Ghiseu *instanta;
 
     Ghiseu();  //constructor privat, previne instantierea
 
-    vector<Spectacol> spectacole;
+    vector<Spectacol> cauta_exigente();  //prima cautare, cauta din toate spectacolele disponibile
+    vector<Spectacol> cauta_preferinte();  //a doua cautare, cauta din rezultatele returnate de prima cautare
+
 
 public:
     static Ghiseu *instantiaza();   //se instantiaza o singura data, folosind metoda asta
-    void adaugaSpectacol();
+
+    void citire_date_spectator();
+
+    void afisare_spectacole_potrivite();
+
+
 };
 
 

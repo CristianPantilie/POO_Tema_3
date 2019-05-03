@@ -10,25 +10,28 @@ class Spectator {
 private:
     string nume;
     unsigned int varsta;
-    vector<string> pofte;
     vector<string> exigente;
+    vector<string> pofte;
 
-    //pofte
-    enum gen {COMEDIE, DRAMA, ACTIUNE};
-    enum tip {TEATRU, OPERA, CIRC};
-    bool pauze;
-//    animale vii
-    bool teatru_interactiv;
-    bool opera_voce;
+    string pofta_gen;  //COMEDIE, DRAMA, ACTIUNE
+    string pofta_tip; //TEATRU, OPERA, CIRC
+    string pofta_durata_min;
+    bool pofta_pauze;
+    string pofta_circ_animale;
+    string pofta_teatru_interactiv;
+    string pofta_opera_voce; //TENOR, BARITON, BASS
 
-    //exigente
-//    map<string, string> combinatie;
-    int durata_max;
-    bool animale_vii; //periculoase?
-    int spectatori_max;
 
-    //pot exista mai multe exigente de acelasi tip
+    string exigenta_combinatie[2];   //(tip, gen) e.g. opera dramatica
+    double exigenta_durata_max;
+    bool exigenta_animale;      //periculoase?
+    int exigenta_spectatori_max;
+
+
     //spectacolul sa fie potrivit pentru categoria de varsta a clientului
+
+
+    //TODO: trebuie sa poata fi acceptate mai multe din aceeasi chestie la unele, de exemplu exigenta_combinatie
 
 public:
     Spectator(string nume, unsigned int varsta);

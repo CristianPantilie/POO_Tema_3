@@ -3,7 +3,6 @@
 
 Spectator::Spectator(string nume, unsigned int varsta): nume(nume), varsta(varsta) {}
 
-
 void Spectator::afis()
 {
     cout << nume << endl << varsta << endl;
