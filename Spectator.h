@@ -10,34 +10,47 @@ class Spectator {
 private:
     string nume;
     unsigned int varsta;
-    vector<string> exigente;
-    vector<string> pofte;
 
-    string pofta_gen;  //COMEDIE, DRAMA, ACTIUNE
-    string pofta_tip; //TEATRU, OPERA, CIRC
-    string pofta_durata_min;
-    bool pofta_pauze;
-    string pofta_circ_animale;
-    string pofta_teatru_interactiv;
-    string pofta_opera_voce; //TENOR, BARITON, BASS
+    vector<string> pofta_gen;  //COMEDIE, DRAMA, ACTIUNE
+    vector<string> pofta_tip; //TEATRU, OPERA, CIRC
+    double pofta_durata_min;
+    vector<string> pofta_circ_animale;
+    bool pofta_teatru_interactiv;
+    vector<string> pofta_opera_voce; //TENOR, BARITON, BASS
 
 
-    string exigenta_combinatie[2];   //(tip, gen) e.g. opera dramatica
+    vector<string> exigenta_combinatie;   //(tip, gen) tipul pe pozitia para urmat de genul pe pozitia impara
     double exigenta_durata_max;
-    bool exigenta_animale;      //periculoase?
+    vector<string> exigenta_animale;      //periculoase?
     int exigenta_spectatori_max;
 
 
-    //spectacolul sa fie potrivit pentru categoria de varsta a clientului
+    //TODO: spectacolul sa fie potrivit pentru categoria de varsta a clientului
 
-
-    //TODO: trebuie sa poata fi acceptate mai multe din aceeasi chestie la unele, de exemplu exigenta_combinatie
 
 public:
     Spectator(string nume, unsigned int varsta);
-    void adauga_pofta(string pofta);
-    void adauga_exigenta(string exigenta);
-    void afis();
+
+    void setPoftaGen(string gen);
+
+    void setPoftaTip(string tip);
+
+    void setPoftaDurataMin(double durata);
+
+
+    void setPoftaCircAnimale(string animal);
+
+    void setPoftaTeatruInteractiv(bool interactiv);
+
+    void setPoftaOperaVoce(string voce);
+
+    void setExigentaCombinatie(string tip, string gen);
+
+    void setExigentaDurataMax(double exigentaDurataMax);
+
+    void setExigentaAnimale(string exigentaAnimale);
+
+    void setExigentaSpectatoriMax(int exigentaSpectatoriMax);
 
 };
 

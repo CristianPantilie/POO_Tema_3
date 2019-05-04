@@ -14,8 +14,9 @@ private:
 
     Ghiseu();  //constructor privat, previne instantierea
 
-    vector<Spectacol> cauta_exigente();  //prima cautare, cauta din toate spectacolele disponibile
-    vector<Spectacol> cauta_preferinte();  //a doua cautare, cauta din rezultatele returnate de prima cautare
+    vector<Spectacol> cauta_exigente(vector<Spectacol> spectacole);  //prima cautare, cauta din toate spectacolele disponibile
+    vector<Spectacol> cauta_pofte(vector<Spectacol> spectacole);  //a doua cautare, cauta din rezultatele returnate de prima cautare
+
 
 
 public:
@@ -27,9 +28,6 @@ public:
 
 
 };
-
-
-
 
 
 #endif //POO_TEMA_3_GHISEU_H

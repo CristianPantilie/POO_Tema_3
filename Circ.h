@@ -4,7 +4,7 @@
 
 #include "Spectacol.h"
 
-class Circ: Spectacol {
+class Circ: public Spectacol {
 
 private:
     list<string> animale;

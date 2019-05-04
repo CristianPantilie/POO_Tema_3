@@ -22,6 +22,8 @@ private:
 
     list<struct prezentare> prezentari;
 
+    friend class Manager;
+
 protected:
 
     double durata;

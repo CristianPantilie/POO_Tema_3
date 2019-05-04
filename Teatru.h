@@ -4,7 +4,7 @@
 
 #include "Spectacol.h"
 
-class Teatru: Spectacol {
+class Teatru: public Spectacol {
 
 private:
 
@@ -13,6 +13,8 @@ private:
 
 public:
     Teatru(const string &nume, double durata, bool pentruAdulti, const string &gen, bool interactiv);
+
+    //TODO:trebuie sa fac durata variabila
 
 };
 

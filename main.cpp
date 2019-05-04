@@ -3,9 +3,16 @@
 #include "Spectator.h"
 #include "Opera.h"
 #include "Circ.h"
+#include "Ghiseu.h"
+#include "Manager.h"
+#include "Teatru.h"
 
 using namespace std;
 
+#define PENTRU_ADULTI true
+#define PENTRU_ORICINE false
+#define INTERACTIV true
+#define NEINTERACTIV false
 
 int main() {
 
@@ -38,13 +45,34 @@ int main() {
 //    o.afis();
 
 
-    Opera o("O opera", 136, false, "DRAMA", 2, 10);
+    Opera o("O opera", 136, PENTRU_ORICINE, "DRAMA", 2, 10);
     o.adauga_act("Salam", "TENOR", 55);
     o.adauga_act("Abi", "BASS", 60);
 
     Circ c("Circul meu", 80);
-    c.adauga_numar(false, "LEI,TIGRI,ELEFANTI");
+    c.adauga_numar(PENTRU_ORICINE, "LEI,TIGRI,ELEFANTI");
 
 
+    Teatru t("Putin teatru", 100, PENTRU_ADULTI, "drama", INTERACTIV);
+
+//    Ghiseu *ghiseu = Ghiseu::instantiaza();
+//
+//    ghiseu->citire_date_spectator();
+
+
+    Manager *manager = Manager::instantiaza();
+
+    manager->adauga_spectacol(o);
+    manager->adauga_spectacol(c);
+    manager->adauga_spectacol(t);
+
+//    manager->citeste_din_fisier();
+
+    manager->test();
+
+    //TODO: sa bagi o variabila pentru bilete vandute in Spectacol, cu metode aferente
+    //TODO: citirea nu merge foarte bine la ghiseu
+    //TODO: cred ca clasa Spectator ar trebui sa fie friend la ghiseu
     return 0;
 }
+

@@ -6,7 +6,7 @@
 #include <ostream>
 #include "Spectacol.h"
 
-class Opera : Spectacol{
+class Opera : public Spectacol{
 private:
     int nr_acte;
 
