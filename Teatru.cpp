@@ -7,3 +7,7 @@ Teatru::Teatru(const string &nume, double durata, bool pentruAdulti, const strin
 string Teatru::getTip() {
     return "teatru";
 }
+
+bool Teatru::isInteractiv() const {
+    return interactiv;
+}

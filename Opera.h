@@ -28,6 +28,8 @@ public:
 
     double getPauza() const;
 
+    vector<string> getSolisti();
+
     string getTip();
 
 

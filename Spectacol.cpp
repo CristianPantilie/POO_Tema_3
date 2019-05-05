@@ -39,3 +39,7 @@ double Spectacol::getDurata() const {
 bool Spectacol::isPentruAdulti() const {
     return pentru_adulti;
 }
+
+const string &Spectacol::getNume() const {
+    return nume;
+}

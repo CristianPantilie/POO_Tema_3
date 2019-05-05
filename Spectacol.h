@@ -37,6 +37,8 @@ public:
 
     double getDurata() const;
 
+    const string &getNume() const;
+
     bool isPentruAdulti() const;
 
     void adauga_prezentare(unsigned int zi, unsigned int luna, unsigned int an, unsigned int locuri);

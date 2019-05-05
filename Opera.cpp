@@ -24,3 +24,13 @@ double Opera::getPauza() const {
     return pauza;
 }
 
+vector<string> Opera::getSolisti()
+{
+    vector<string> solisti;
+    for(auto i : acte)
+        solisti.push_back(i.tip_solist);
+
+    return solisti;
+}
+
+

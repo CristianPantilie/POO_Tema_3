@@ -16,6 +16,9 @@ public:
 
     string getTip();
 
+    bool isInteractiv() const;
+
+
     //TODO:trebuie sa fac durata variabila
 
 };

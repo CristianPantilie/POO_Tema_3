@@ -4,6 +4,7 @@
 #include "Spectator.h"
 #include "Opera.h"
 #include "Circ.h"
+#include "Teatru.h"
 
 
 Ghiseu *Ghiseu::instanta = nullptr;
@@ -135,12 +136,6 @@ vector<Spectacol *> Ghiseu::cauta_exigente(vector<Spectacol *> spectacole, Spect
 {
     vector<Spectacol *> rezultat;
 
-//    vector<string> exigenta_combinatie;   //(tip, gen) tipul pe pozitia para urmat de genul pe pozitia impara
-//    double exigenta_durata_max;
-//    vector<string> exigenta_animale;      //periculoase?
-//    int exigenta_spectatori_max;
-//
-
     for(auto it = spectacole.begin(); it != spectacole.end(); it++){
         bool ebun = true;
 
@@ -152,9 +147,9 @@ vector<Spectacol *> Ghiseu::cauta_exigente(vector<Spectacol *> spectacole, Spect
 
         //verific combinatiile interzise
         auto combinatii = s.getExigentaCombinatie();
-        for(auto i = combinatii.begin() + 1; i != combinatii.end(); i++)
+        for(auto i = combinatii.begin() ; i != combinatii.end(); i++)
         {
-            if ((*i) == gen && (*(i - 1)) == tip)
+            if ((*i) == tip && i != combinatii.end() && (*(i + 1)) == gen)
             {
                 ebun = false;
                 break;
@@ -166,7 +161,7 @@ vector<Spectacol *> Ghiseu::cauta_exigente(vector<Spectacol *> spectacole, Spect
         if(d != -1 && durata > d)
             ebun = false;
 
-        //verific animalele interzise
+//        verific animalele interzise
         if(tip == "circ")
         {
             vector<string> animals = dynamic_cast<Circ *>((*it))->getAnimale();
@@ -196,41 +191,111 @@ vector<Spectacol *> Ghiseu::cauta_exigente(vector<Spectacol *> spectacole, Spect
 }
 
 
-//vector<Spectacol *> Ghiseu::cauta_pofte(vector<Spectacol *> spectacole, Spectator s)
-//{
-//
-//
-//    if( tip == "opera")
-//    {
-//        cout << "pauza operei" << dynamic_cast<Opera *>((*it))->getPauza();
-//    }
-//    else if(tip == "circ")
-//    {
-//        cout << "";
-//    }
-//    else if(tip == "teatru")
-//    {
-//        cout << "";
-//    }
-//    return vector<Spectacol>();
-//}
+vector<Spectacol *> Ghiseu::cauta_pofte(vector<Spectacol *> spectacole, Spectator s)
+{
+    vector<Spectacol *> rezultat;
+
+    for(auto it = spectacole.begin(); it != spectacole.end(); it++)
+    {
+        int scor = 0;
+
+        //aici trebuie sa inceapa invers, ca e alta idee
+        //eventual sa fac pe mai multe nivele, ca sa nu stau sa sortez
+        //pentru sortat: tin un max, il bag la inceput si pe urma cand mai vreau ceva le mut pe celelalte la dreapta
+
+        //sau arat un spectacol foarte potrivit (max) si pe urma arat si celelalte optiuni (eventual cu nr de match-uri)
+
+
+        string tip = (*it)->getTip();
+        string gen = (*it)->getGen();
+        double durata = (*it)->getDurata();
+
+
+        //verific genurile
+        auto genuri = s.getPoftaGen();
+        for(auto i : genuri)
+        {
+            if(i == gen) {
+                scor++;
+                break;
+            }
+        }
+
+        //verific tipurile
+        auto tipuri = s.getPoftaTip();
+        for(auto i : tipuri)
+        {
+            if(i == tip){
+                scor++;
+                break;
+            }
+        }
+
+        //verific durata minima
+        if(s.getPoftaDurataMin() > durata)
+            scor++;
+
+
+        //verific vocile
+        if( tip == "opera")
+        {
+            auto disponibili = dynamic_cast<Opera *>((*it))->getSolisti();
+            auto doriti = s.getPoftaOperaVoce();
+            for(auto i : doriti)
+            {
+                for(auto j : disponibili)
+                {
+                    if(i == j)
+                    {
+                        scor++;
+                        break;
+                    }
+                }
+            }
+        }
+        //verific animalele
+        else if(tip == "circ")
+        {
+            auto disponibile = dynamic_cast<Circ *>((*it))->getAnimale();
+            auto dorite = s.getPoftaCircAnimale();
+            for(auto i : dorite)
+            {
+                for(auto j : disponibile)
+                {
+                    if(i == j)
+                    {
+                        scor++;
+                        break;
+                    }
+                }
+            }
+        }
+        //verific teatrul interactiv
+        else if(tip == "teatru")
+        {
+            if(dynamic_cast<Teatru *>((*it))->isInteractiv())
+                scor++;
+        }
+
+    }
+    return rezultat;
+}
 
 
 
 void Ghiseu::afisare_spectacole(vector<Spectacol *> spectacole)
 {
     for(auto i :spectacole)
-        cout << i;
+        cout << i->getNume();
 }
 
 void Ghiseu::operatie(Manager *m)
 {
     Spectator s = citire_date_spectator();
-    cout << "ok";
+
     vector<Spectacol *> spectacole = m->spectacole_valabile();
-    cout << "ok";
+
     spectacole = cauta_exigente(spectacole, s);
-    cout << "ok";
 //    spectacole = cauta_pofte(spectacole, s);
 
     afisare_spectacole(spectacole);
