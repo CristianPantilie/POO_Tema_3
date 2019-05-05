@@ -1,7 +1,13 @@
 #include <iostream>
 #include "Spectator.h"
 
-Spectator::Spectator(string nume, unsigned int varsta): nume(nume), varsta(varsta) {}
+Spectator::Spectator(string nume, unsigned int varsta): nume(nume), varsta(varsta)
+{
+    pofta_durata_min = -1;
+    exigenta_durata_max = -1;
+    exigenta_spectatori_max = -1;
+    pofta_teatru_interactiv = false;
+}
 
 void Spectator::setPoftaGen(string gen)
 {
@@ -44,6 +50,54 @@ void Spectator::setExigentaAnimale(string exigentaAnimale) {
 
 void Spectator::setExigentaSpectatoriMax(int exigentaSpectatoriMax) {
     exigenta_spectatori_max = exigentaSpectatoriMax;
+}
+
+const string &Spectator::getNume() const {
+    return nume;
+}
+
+unsigned int Spectator::getVarsta() const {
+    return varsta;
+}
+
+const vector<string> &Spectator::getPoftaGen() const {
+    return pofta_gen;
+}
+
+const vector<string> &Spectator::getPoftaTip() const {
+    return pofta_tip;
+}
+
+double Spectator::getPoftaDurataMin() const {
+    return pofta_durata_min;
+}
+
+const vector<string> &Spectator::getPoftaCircAnimale() const {
+    return pofta_circ_animale;
+}
+
+bool Spectator::isPoftaTeatruInteractiv() const {
+    return pofta_teatru_interactiv;
+}
+
+const vector<string> &Spectator::getPoftaOperaVoce() const {
+    return pofta_opera_voce;
+}
+
+const vector<string> &Spectator::getExigentaCombinatie() const {
+    return exigenta_combinatie;
+}
+
+double Spectator::getExigentaDurataMax() const {
+    return exigenta_durata_max;
+}
+
+const vector<string> &Spectator::getExigentaAnimale() const {
+    return exigenta_animale;
+}
+
+int Spectator::getExigentaSpectatoriMax() const {
+    return exigenta_spectatori_max;
 }
 
 

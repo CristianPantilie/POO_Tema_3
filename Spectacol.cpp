@@ -27,3 +27,15 @@ bool Spectacol::exista_prezentare(unsigned int zi, unsigned int luna, unsigned i
 
 Spectacol::Spectacol(const string &nume, double durata, bool pentru_adulti, string gen) : nume(nume), durata(durata),
                                                                                     pentru_adulti(pentru_adulti), gen(gen) {}
+
+const string &Spectacol::getGen() const {
+    return gen;
+}
+
+double Spectacol::getDurata() const {
+    return durata;
+}
+
+bool Spectacol::isPentruAdulti() const {
+    return pentru_adulti;
+}

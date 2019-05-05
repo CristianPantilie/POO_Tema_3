@@ -16,3 +16,11 @@ void Opera::adauga_act(string nume, string tip, double durata)
     acte.push_back(a);
 }
 
+string Opera::getTip() {
+    return "opera";
+}
+
+double Opera::getPauza() const {
+    return pauza;
+}
+

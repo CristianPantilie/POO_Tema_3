@@ -15,7 +15,7 @@ private:
     vector<string> pofta_tip; //TEATRU, OPERA, CIRC
     double pofta_durata_min;
     vector<string> pofta_circ_animale;
-    bool pofta_teatru_interactiv;
+    bool pofta_teatru_interactiv;   //daca e false atunci merge orice fel de teatru
     vector<string> pofta_opera_voce; //TENOR, BARITON, BASS
 
 
@@ -37,7 +37,6 @@ public:
 
     void setPoftaDurataMin(double durata);
 
-
     void setPoftaCircAnimale(string animal);
 
     void setPoftaTeatruInteractiv(bool interactiv);
@@ -51,6 +50,30 @@ public:
     void setExigentaAnimale(string exigentaAnimale);
 
     void setExigentaSpectatoriMax(int exigentaSpectatoriMax);
+
+    const string &getNume() const;
+
+    unsigned int getVarsta() const;
+
+    const vector<string> &getPoftaGen() const;
+
+    const vector<string> &getPoftaTip() const;
+
+    double getPoftaDurataMin() const;
+
+    const vector<string> &getPoftaCircAnimale() const;
+
+    bool isPoftaTeatruInteractiv() const;
+
+    const vector<string> &getPoftaOperaVoce() const;
+
+    const vector<string> &getExigentaCombinatie() const;
+
+    double getExigentaDurataMax() const;
+
+    const vector<string> &getExigentaAnimale() const;
+
+    int getExigentaSpectatoriMax() const;
 
 };
 

@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Ghiseu.h"
 #include "Spectator.h"
+#include "Opera.h"
+#include "Circ.h"
 
 
 Ghiseu *Ghiseu::instanta = nullptr;
@@ -16,7 +18,7 @@ Ghiseu *Ghiseu::instantiaza()
     return instanta;
 }
 
-void Ghiseu::citire_date_spectator()
+Spectator Ghiseu::citire_date_spectator()
 {
     string nume;
     cout << "Numele: ";
@@ -126,19 +128,110 @@ void Ghiseu::citire_date_spectator()
         cin >> c;
     }
 
-
+    return s;
 }
 
-vector<Spectacol> Ghiseu::cauta_exigente(vector<Spectacol> spectacole)
+vector<Spectacol *> Ghiseu::cauta_exigente(vector<Spectacol *> spectacole, Spectator s)
 {
-    //iei fiecare spectacol si verifici daca se potrivesc exigentele cu ce e acolo
+    vector<Spectacol *> rezultat;
 
-    return vector<Spectacol>();
+//    vector<string> exigenta_combinatie;   //(tip, gen) tipul pe pozitia para urmat de genul pe pozitia impara
+//    double exigenta_durata_max;
+//    vector<string> exigenta_animale;      //periculoase?
+//    int exigenta_spectatori_max;
+//
+
+    for(auto it = spectacole.begin(); it != spectacole.end(); it++){
+        bool ebun = true;
+
+        string tip = (*it)->getTip();
+        string gen = (*it)->getGen();
+        double durata = (*it)->getDurata();
+        bool  pentru_adulti = (*it)->isPentruAdulti();
+
+
+        //verific combinatiile interzise
+        auto combinatii = s.getExigentaCombinatie();
+        for(auto i = combinatii.begin() + 1; i != combinatii.end(); i++)
+        {
+            if ((*i) == gen && (*(i - 1)) == tip)
+            {
+                ebun = false;
+                break;
+            }
+        }
+
+        //verific durata maxima
+        double d = s.getExigentaDurataMax();
+        if(d != -1 && durata > d)
+            ebun = false;
+
+        //verific animalele interzise
+        if(tip == "circ")
+        {
+            vector<string> animals = dynamic_cast<Circ *>((*it))->getAnimale();
+            vector<string> animale = s.getExigentaAnimale();
+            for(auto i = animals.begin(); i != animals.end(); i++)
+            {
+                for(auto j = animale.begin(); j != animale.end(); j++)
+                {
+                    if(*i == *j)
+                        ebun = false;
+                }
+            }
+        }
+
+        //TODO:verific maximul de spectatori
+
+        //verific varsta
+        if(s.getVarsta() < 18 && pentru_adulti)
+            ebun = false;
+
+        //daca e bun il bag in vectorul rezultat
+        if(ebun)
+            rezultat.push_back(*it);
+    }
+
+    return rezultat;
 }
 
-vector<Spectacol> Ghiseu::cauta_pofte(vector<Spectacol> spectacole)
+
+//vector<Spectacol *> Ghiseu::cauta_pofte(vector<Spectacol *> spectacole, Spectator s)
+//{
+//
+//
+//    if( tip == "opera")
+//    {
+//        cout << "pauza operei" << dynamic_cast<Opera *>((*it))->getPauza();
+//    }
+//    else if(tip == "circ")
+//    {
+//        cout << "";
+//    }
+//    else if(tip == "teatru")
+//    {
+//        cout << "";
+//    }
+//    return vector<Spectacol>();
+//}
+
+
+
+void Ghiseu::afisare_spectacole(vector<Spectacol *> spectacole)
 {
-    return vector<Spectacol>();
+    for(auto i :spectacole)
+        cout << i;
 }
 
+void Ghiseu::operatie(Manager *m)
+{
+    Spectator s = citire_date_spectator();
+    cout << "ok";
+    vector<Spectacol *> spectacole = m->spectacole_valabile();
+    cout << "ok";
+    spectacole = cauta_exigente(spectacole, s);
+    cout << "ok";
+//    spectacole = cauta_pofte(spectacole, s);
 
+    afisare_spectacole(spectacole);
+}

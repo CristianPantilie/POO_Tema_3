@@ -3,6 +3,8 @@
 #define POO_TEMA_3_GHISEU_H
 #include <vector>
 #include "Spectacol.h"
+#include "Spectator.h"
+#include "Manager.h"
 
 using namespace std;
 
@@ -14,18 +16,18 @@ private:
 
     Ghiseu();  //constructor privat, previne instantierea
 
-    vector<Spectacol> cauta_exigente(vector<Spectacol> spectacole);  //prima cautare, cauta din toate spectacolele disponibile
-    vector<Spectacol> cauta_pofte(vector<Spectacol> spectacole);  //a doua cautare, cauta din rezultatele returnate de prima cautare
+    vector<Spectacol *> cauta_exigente(vector<Spectacol *> spectacole, Spectator s);  //prima cautare, cauta din toate spectacolele disponibile
+    vector<Spectacol *> cauta_pofte(vector<Spectacol *> spectacole, Spectator s);  //a doua cautare, cauta din rezultatele returnate de prima cautare
 
+    Spectator citire_date_spectator();
 
+    void afisare_spectacole(vector<Spectacol *> spectacole) ;
 
 public:
+
     static Ghiseu *instantiaza();   //se instantiaza o singura data, folosind metoda asta
 
-    void citire_date_spectator();
-
-    void afisare_spectacole_potrivite();
-
+    void operatie(Manager *m);
 
 };
 

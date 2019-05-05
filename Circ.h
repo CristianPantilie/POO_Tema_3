@@ -7,7 +7,6 @@
 class Circ: public Spectacol {
 
 private:
-    list<string> animale;
 
     struct numar
     {
@@ -15,9 +14,15 @@ private:
         vector<string> animale;
     };
 
+    vector<struct numar> numere;
+
 public:
     Circ(const string &nume, double durata);
     void adauga_numar(bool adulti, string animale);
+
+    string getTip();
+
+    vector<string> getAnimale();
 
 };
 

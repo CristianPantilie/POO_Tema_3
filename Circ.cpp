@@ -24,4 +24,21 @@ void Circ::adauga_numar(bool adulti, string animale)
         animale.erase(0, pos + 1);
     }
     nr.animale.push_back(animale);
+
+    numere.push_back(nr);
+}
+
+string Circ::getTip() {
+    return "circ";
+}
+
+vector<string> Circ::getAnimale() {
+
+    vector<string> rezultat;
+    for(auto it : numere)
+    {
+        rezultat.insert(rezultat.end(), it.animale.begin(), it.animale.end());
+    }
+
+    return rezultat;
 }

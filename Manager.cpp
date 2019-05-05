@@ -1,7 +1,9 @@
 
 #include <iostream>
 #include <fstream>
+#include <typeinfo>
 #include "Manager.h"
+#include "Opera.h"
 
 
 Manager *Manager::instanta = nullptr;
@@ -16,7 +18,7 @@ Manager *Manager::instantiaza()
     return instanta;
 }
 
-void Manager::adauga_spectacol(Spectacol s)
+void Manager::adauga_spectacol(Spectacol *s)
 {
     spectacole.push_back(s);
 }
@@ -25,15 +27,28 @@ void Manager::adauga_spectacol(Spectacol s)
 void Manager::test()
 {
     for(auto it = spectacole.begin(); it != spectacole.end(); it++){
-        cout << it->nume;
+        string tip = (*it)->getTip();
+        if( tip == "opera")
+        {
+            cout << "pauza operei" << dynamic_cast<Opera *>((*it))->getPauza();
+        }
+        else if(tip == "circ")
+        {
+            cout << "";
+        }
+        else if(tip == "teatru")
+        {
+            cout << "";
+        }
     }
 
+
 }
 
-vector<Spectacol> Manager::spectacole_valabile()
-{
+vector<Spectacol *> Manager::spectacole_valabile() {
     return spectacole;
 }
+
 
 //void Manager::citeste_din_fisier()
 //{

@@ -45,30 +45,32 @@ int main() {
 //    o.afis();
 
 
-    Opera o("O opera", 136, PENTRU_ORICINE, "DRAMA", 2, 10);
-    o.adauga_act("Salam", "TENOR", 55);
-    o.adauga_act("Abi", "BASS", 60);
+    Opera *o = new Opera("O opera", 136, PENTRU_ORICINE, "DRAMA", 2, 10);
+    o->adauga_act("Salam", "TENOR", 55);
+    o->adauga_act("Abi", "BASS", 60);
 
-    Circ c("Circul meu", 80);
-    c.adauga_numar(PENTRU_ORICINE, "LEI,TIGRI,ELEFANTI");
+    Circ *c = new Circ("Circul meu", 80);
+    c->adauga_numar(PENTRU_ORICINE, "LEI,TIGRI,ELEFANTI");
 
 
-    Teatru t("Putin teatru", 100, PENTRU_ADULTI, "drama", INTERACTIV);
+    Teatru *t = new Teatru("Putin teatru", 100, PENTRU_ADULTI, "drama", INTERACTIV);
 
-//    Ghiseu *ghiseu = Ghiseu::instantiaza();
-//
-//    ghiseu->citire_date_spectator();
+
+
+
 
 
     Manager *manager = Manager::instantiaza();
-
     manager->adauga_spectacol(o);
     manager->adauga_spectacol(c);
     manager->adauga_spectacol(t);
 
 //    manager->citeste_din_fisier();
 
-    manager->test();
+
+    Ghiseu *ghiseu = Ghiseu::instantiaza();
+
+    ghiseu->operatie(manager);
 
     //TODO: sa bagi o variabila pentru bilete vandute in Spectacol, cu metode aferente
     //TODO: citirea nu merge foarte bine la ghiseu

@@ -14,6 +14,8 @@ private:
 public:
     Teatru(const string &nume, double durata, bool pentruAdulti, const string &gen, bool interactiv);
 
+    string getTip();
+
     //TODO:trebuie sa fac durata variabila
 
 };

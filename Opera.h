@@ -26,6 +26,10 @@ public:
     Opera(const string &nume, double durata, bool pentruAdulti, const string &gen, int nrActe, double pauza);
     void adauga_act(string nume, string tip, double durata);
 
+    double getPauza() const;
+
+    string getTip();
+
 
 };
 

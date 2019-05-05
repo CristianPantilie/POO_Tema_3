@@ -30,6 +30,15 @@ protected:
     bool pentru_adulti;
 
 public:
+
+    virtual string getTip() = 0;
+
+    const string &getGen() const;
+
+    double getDurata() const;
+
+    bool isPentruAdulti() const;
+
     void adauga_prezentare(unsigned int zi, unsigned int luna, unsigned int an, unsigned int locuri);
     bool exista_prezentare(unsigned int zi, unsigned int luna, unsigned int an);
 
