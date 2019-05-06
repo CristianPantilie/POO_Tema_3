@@ -18,6 +18,7 @@ private:
         unsigned int luna;
         unsigned int an;
         unsigned int locuri;
+        unsigned int locuri_ocupate;
     };
 
     list<struct prezentare> prezentari;
@@ -44,9 +45,13 @@ public:
     void adauga_prezentare(unsigned int zi, unsigned int luna, unsigned int an, unsigned int locuri);
     bool exista_prezentare(unsigned int zi, unsigned int luna, unsigned int an);
 
+    void vinde_bilet(unsigned int zi, unsigned int luna, unsigned int an, int varsta);
+
+    void afiseaza_prezentari();
+
     Spectacol(const string &nume, double durata, bool pentru_adulti, string gen);
 
-
+    virtual void print_details() = 0;
 
 
 };

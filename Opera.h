@@ -32,6 +32,7 @@ public:
 
     string getTip();
 
+    void print_details();
 
 };
 

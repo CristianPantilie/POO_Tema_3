@@ -194,17 +194,10 @@ vector<Spectacol *> Ghiseu::cauta_exigente(vector<Spectacol *> spectacole, Spect
 vector<Spectacol *> Ghiseu::cauta_pofte(vector<Spectacol *> spectacole, Spectator s)
 {
     vector<Spectacol *> rezultat;
-
+    int max = 0;
     for(auto it = spectacole.begin(); it != spectacole.end(); it++)
     {
         int scor = 0;
-
-        //aici trebuie sa inceapa invers, ca e alta idee
-        //eventual sa fac pe mai multe nivele, ca sa nu stau sa sortez
-        //pentru sortat: tin un max, il bag la inceput si pe urma cand mai vreau ceva le mut pe celelalte la dreapta
-
-        //sau arat un spectacol foarte potrivit (max) si pe urma arat si celelalte optiuni (eventual cu nr de match-uri)
-
 
         string tip = (*it)->getTip();
         string gen = (*it)->getGen();
@@ -277,16 +270,53 @@ vector<Spectacol *> Ghiseu::cauta_pofte(vector<Spectacol *> spectacole, Spectato
                 scor++;
         }
 
+        if(scor > max)
+            rezultat.insert(rezultat.begin(), *it);
+        else
+            rezultat.push_back(*it);
+
     }
     return rezultat;
 }
 
 
 
-void Ghiseu::afisare_spectacole(vector<Spectacol *> spectacole)
+void Ghiseu::afisare_spectacole(vector<Spectacol *> spectacole, Spectator s)
 {
-    for(auto i :spectacole)
-        cout << i->getNume();
+    int k = 2;
+    auto it = spectacole.begin();
+    cout << "\nSpectacol sugerat: \n\t1) ";
+    (*it)->print_details();
+    cout << "\nAlte spectacole potrivite: ";
+    it++;
+    while(it != spectacole.end())
+    {
+        cout << "\n\t" << k << ") ";
+        (*it)->print_details();
+        it++;
+        k++;
+    }
+
+    cout << "\nApasati numarul din fata spectacolului pentru a selecta un spectacol";
+    int x;
+    cin >> x;
+    if(x > 0 && x <= k )
+    {
+        spectacole[x - 1]->afiseaza_prezentari();
+        cout << "Introduceti data la care doriti un bilet";
+        unsigned int zi, luna, an;
+        cout << "\nZiua: ";
+        cin >> zi;
+        cout << "\nLuna: ";
+        cin >> luna;
+        cout << "\nAnul: ";
+        cin >> an;
+        spectacole[x - 1]->vinde_bilet(zi, luna, an, s.getVarsta());
+    }
+    else
+        cout << "\nSelectie invalida\n";
+
+
 }
 
 void Ghiseu::operatie(Manager *m)
@@ -296,7 +326,9 @@ void Ghiseu::operatie(Manager *m)
     vector<Spectacol *> spectacole = m->spectacole_valabile();
 
     spectacole = cauta_exigente(spectacole, s);
-//    spectacole = cauta_pofte(spectacole, s);
+    spectacole = cauta_pofte(spectacole, s);
 
-    afisare_spectacole(spectacole);
+    afisare_spectacole(spectacole, s);
+
 }
+

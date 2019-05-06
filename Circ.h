@@ -24,6 +24,8 @@ public:
 
     vector<string> getAnimale();
 
+    void print_details();
+
 };
 
 

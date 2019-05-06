@@ -42,3 +42,16 @@ vector<string> Circ::getAnimale() {
 
     return rezultat;
 }
+
+void Circ::print_details()
+{
+    cout << getNume() << " : " << "circ, " << durata << " minute, " << numere.size() << " numere: ";
+    int k = 1;
+    for(auto i : numere)
+    {
+        cout << "\n\t\t" << k << ". Animale: ";
+        for(auto j : i.animale)
+            cout << j << " ";
+    }
+
+}

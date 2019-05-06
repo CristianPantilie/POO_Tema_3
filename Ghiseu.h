@@ -21,7 +21,9 @@ private:
 
     Spectator citire_date_spectator();
 
-    void afisare_spectacole(vector<Spectacol *> spectacole) ;
+    void afisare_spectacole(vector<Spectacol *> spectacole, Spectator s);
+
+    void vinde_bilet(int varsta);
 
 public:
 

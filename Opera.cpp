@@ -33,4 +33,20 @@ vector<string> Opera::getSolisti()
     return solisti;
 }
 
+void Opera::print_details()
+{
+    cout << getNume() << " : " << "opera de " << getGen() << ", " << durata << " minute, ";
+    if(pentru_adulti)
+        cout << "pentru adulti, ";
+    else
+        cout << "orice varsta, ";
+
+    cout << nr_acte << " acte:";
+    int k = 1;
+    for(auto i : acte)
+        cout << "\n\t\t\t" <<  k++ << ". " << i.tip_solist << ": " << i.nume_solist << ", " << i.durata << " minute.";
+
+
+}
+
 

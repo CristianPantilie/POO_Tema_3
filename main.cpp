@@ -16,36 +16,9 @@ using namespace std;
 
 int main() {
 
-//    Spectacol cacat("futaiul", 136, false, "Comedie");
-//    cacat.adauga_prezentare(24, 04, 2019, 44);
-//    cacat.adauga_prezentare(44, 90, 555, 0);
-//    cacat.adauga_prezentare(15, 03, 1999, 1);
-//
-//    cout << cacat.exista_prezentare(44, 90, 555) << endl;
-//    cout << cacat.exista_prezentare(24, 04, 2019) << endl;
 
 
-//    Spectator s("Cristianusul", 23);
-//    s.adauga_pofta("Comedie");
-//    s.adauga_pofta("Opera");
-//    s.adauga_pofta("Tenor");
-//    s.adauga_pofta("fara pauze");
-//    s.adauga_pofta("pinguini");
-//    s.adauga_pofta("teatru interactiv");
-//
-//    s.adauga_exigenta("nu opera dramatica");
-//    s.adauga_exigenta("maxim 130 min");
-//    s.adauga_exigenta("nu animale periculoase");
-//    s.adauga_exigenta("maxim 40 spectatori");
-//    //spectacolul sa fie potrivit pentru categoria de varsta a clientului
-//
-//    s.afis();
-//
-//    Opera o("TENOR");
-//    o.afis();
-
-
-    Opera *o = new Opera("O opera", 136, PENTRU_ORICINE, "DRAMA", 2, 10);
+    Opera *o = new Opera("O opera", 136, PENTRU_ORICINE, "drama", 2, 10);
     o->adauga_act("Salam", "TENOR", 55);
     o->adauga_act("Abi", "BASS", 60);
 
@@ -56,8 +29,10 @@ int main() {
     Teatru *t = new Teatru("Putin teatru", 100, PENTRU_ADULTI, "drama", INTERACTIV);
 
 
-
-
+    o->adauga_prezentare(24, 5, 2019, 44);
+    t->adauga_prezentare(30, 5, 2019, 15);
+    t->adauga_prezentare(16, 5, 2019, 30);
+    t->adauga_prezentare(1, 6, 2019, 19);
 
 
     Manager *manager = Manager::instantiaza();
@@ -65,16 +40,12 @@ int main() {
     manager->adauga_spectacol(c);
     manager->adauga_spectacol(t);
 
-//    manager->citeste_din_fisier();
 
 
     Ghiseu *ghiseu = Ghiseu::instantiaza();
-
     ghiseu->operatie(manager);
 
-    //TODO: sa bagi o variabila pentru bilete vandute in Spectacol, cu metode aferente
-    //TODO: citirea nu merge foarte bine la ghiseu
-    //TODO: cred ca clasa Spectator ar trebui sa fie friend la ghiseu
+
     return 0;
 }
 

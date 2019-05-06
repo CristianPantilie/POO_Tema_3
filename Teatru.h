@@ -9,7 +9,6 @@ class Teatru: public Spectacol {
 private:
 
     bool interactiv;
-    double durata_variabila; //un minut pentru adult si doua pentru copii sub 16 ani)
 
 public:
     Teatru(const string &nume, double durata, bool pentruAdulti, const string &gen, bool interactiv);
@@ -18,9 +17,7 @@ public:
 
     bool isInteractiv() const;
 
-
-    //TODO:trebuie sa fac durata variabila
-
+    void print_details();
 };
 
 
