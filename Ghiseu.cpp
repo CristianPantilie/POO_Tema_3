@@ -176,7 +176,9 @@ vector<Spectacol *> Ghiseu::cauta_exigente(vector<Spectacol *> spectacole, Spect
             }
         }
 
-        //TODO:verific maximul de spectatori
+        //verific maximul de spectatori (spectacolul sa aiba cel putin o prezentare cu cel mult atatia spectatori)
+        if(s.getExigentaSpectatoriMax() < (*it)->nr_min_spectatori())
+            ebun = false;
 
         //verific varsta
         if(s.getVarsta() < 18 && pentru_adulti)

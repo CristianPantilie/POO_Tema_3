@@ -97,3 +97,14 @@ bool Spectacol::isPentruAdulti() const {
 const string &Spectacol::getNume() const {
     return nume;
 }
+
+int Spectacol::nr_min_spectatori()
+{
+    int min = 0;
+    for(auto i: prezentari)
+    {
+        if(i.locuri_ocupate < min)
+            min = i.locuri_ocupate;
+    }
+    return min;
+}

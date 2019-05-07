@@ -23,8 +23,11 @@ int main() {
     o->adauga_act("Abi", "BASS", 60);
 
     Circ *c = new Circ("Circul meu", 80);
-    c->adauga_numar(PENTRU_ORICINE, "LEI,TIGRI,ELEFANTI");
+    c->adauga_numar(PENTRU_ORICINE, "lei,tigri,elefanti");
 
+    Circ *c1 = new Circ("Un alt circ", 90);
+    c->adauga_numar(PENTRU_ADULTI, "oi, pisici, caini");
+    c->adauga_numar(PENTRU_ORICINE, "muste");
 
     Teatru *t = new Teatru("Putin teatru", 100, PENTRU_ADULTI, "drama", INTERACTIV);
 
@@ -44,6 +47,9 @@ int main() {
 
     Ghiseu *ghiseu = Ghiseu::instantiaza();
     ghiseu->operatie(manager);
+
+    ghiseu->operatie(manager);
+
 
 
     return 0;

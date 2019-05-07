@@ -32,6 +32,8 @@ protected:
 
 public:
 
+    int nr_min_spectatori();
+
     virtual string getTip() = 0;
 
     const string &getGen() const;
